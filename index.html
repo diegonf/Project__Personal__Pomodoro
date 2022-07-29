@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang = "pt-br">
+  <head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="icon" href="./imgs/logo.svg" type="image/icon type">
+    <link href="./reset.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Open+Sans:wght@300;400;700&family=Raleway:wght@200;300;400;500;600;700&display=swap">
+    <link href="./style.css" rel="stylesheet">
+    <link href="./css/header.css" rel="stylesheet">
+    <link href="./css/pomotool.css" rel="stylesheet">
+    <link href="./css/pomosettings.css" rel="stylesheet">
+    <link href="./css/pomotimer.css" rel="stylesheet">
+    <link href="./css/pomotasks.css" rel="stylesheet">
+    <link href="./css/pomocontinuerunning.css" rel="stylesheet">
+    <link href="./css/pomotimer-reset.css" rel="stylesheet">
+    <link href="./css/textcontent.css" rel="stylesheet">
+    <link href="./css/rodape.css" rel="stylesheet">
+    
+  </head>
+
+  <body data-body>
+    <header class="header">
+      <div class="header__logo">
+        <img src="./imgs/simpletools.svg" alt="Logotipo do site." class="header__image">
+        <p class="header__textlogo">simpletools</p>
+      </div>
+        <ul class="header__menu">
+          <li class="header__items"><a class="header__link anchor" href="#pomodorotimer">Pomodoro Timer</a></li>
+          <li class="header__items"><a class="header__link" href="#thetechnique">The Technique</a></li>
+          <li class="header__items"><a class="header__link" href="#thewebsite">The Website</a></li>
+        </ul>
+    </header>
+    <main>
+      <section class="pomotool">
+        <div class="pomotool__container" data-pomo-container>
+          <div class="pomotool__header--container">
+            <h1 class="pomotool__header--h1" id="pomodorotimer"><img class="pomotool__header--h1logo" src="./imgs/logo.svg" alt="pomodoro logo">Pomodoro Timer</h1>
+            <div class="pomotool__settings--container">
+              <div class="pomotool__settings--tasks pomotool__settings">
+                <input name="hidetasks" id="hidetasks" class="pomotool__settings--hidetasks" type="checkbox" data-hide-tasks>
+                <label for="hidetasks" class="pomotool__settings--text">Hide Tasks?</label>
+              </div>
+              <div class="pomotool__settings--volume pomotool__settings" data-botao-volume>
+                <img  data-botao-volumeon class="pomotool__settings--image" src="./imgs/volumeon.svg" alt="Volume On Icon" >
+                <img data-botao-volumeoff class="pomotool__settings--image" src="./imgs/volumeoff.svg" alt="Volume Off Icon" style="display: none;">
+              </div>
+              <div class="pomotool__settings--timer pomotool__settings" data-botao-settings>
+                <img class="pomotool__settings--image" src="./imgs/settings.svg" alt="Settings icon">
+              </div>
+            </div>
+          </div>
+          
+          <div class="pomotool__block--container">
+            <div class="pomotool__block pomotimer" data-pomotimer-block>
+              <div class="pomotimer__butttimers">
+                <button class="pomotimer__butttimer active" data-botao-pomo = "startPomo">Pomodoro</button>
+                <button class="pomotimer__butttimer" data-botao-pomo = "breakPomo">Short Break</button>
+                <button class="pomotimer__butttimer" data-botao-pomo = "longBreakPomo">Long Break</button>
+              </div>
+              <div class='pomotimer__timer'>
+                <canvas class="pomotimer__canvas" data-mycanvas height="256" width="256"></canvas>
+                <div class="pomotimer__timer--text" data-timer>25:00</div>
+              </div>
+              <div class="pomotimer__controls--container">
+                <div class="pomotimer__controls">
+                  <div class="pomotimer__control--start pomotimer__control" data-botao-start>
+                    <button class="pomotimer__control--startbutton pomotimer__control--button"></button>
+                    <p class="pomotimer__control--text">Start</p>
+                  </div>
+                  <div class="pomotimer__control--pause pomotimer__control" data-botao-pausar>
+                    <button class="pomotimer__control--pausebutton pomotimer__control--button"></button>
+                    <p class="pomotimer__control--text">Pause</p>
+                  </div>
+                  <div class="pomotimer__control--stop pomotimer__control" data-botao-finalizar>
+                    <button class="pomotimer__control--stopbutton pomotimer__control--button"></button>
+                    <p class="pomotimer__control--text">Stop</p>
+                  </div>
+                </div>
+                <div class="pomotimer__control--count">
+                  <p class="pomotimer__count" data-cont-pomo>Pomos: #0</p>
+                </div>
+              </div>
+            </div>
+            <div class="pomotool__block pomotasks" data-pomotasks-block>
+              <div class="pomotasks__input--container">
+                <input type="text" class="pomotasks__input" placeholder="Add a task" data-todolist-input>
+                <img class="pomotasks__input--enter" src="./imgs/enterkey.svg" alt="add task" data-todolist-enter>
+              </div>
+              <ul class="pomotasks__itens" data-todolist-itens>
+              </ul>
+            </div>
+          </div>
+        </div> 
+        <div class="ad1"></div>
+      </section>
+
+      <section class="textcontent--container">
+        <h2 class="sectionTitle" id="thetechnique">The Online Time Management Tool</h2>
+        <div class="textcontent__pomodoro textcontent">
+          <h2 class="textcontent__h2">The Pomodoro Technique</h2>
+          <div class="textcontent__pomodoro--img">
+          </div>
+          <p class="textcontent__p">
+            The Pomodoro is a time management tool to help you get things done. The method was created by the entrepreneur <a href="https://francescocirillo.com/">Francesco Cirillo</a> in the early 1990s. The tool was named Pomodoro because of the tomato-shaped timer Francesco Cirillo used at that time.
+          </p>
+          <p class="textcontent__p">
+            The technique consists of setting a 25-minute interval (called "pomodoro") to focus on the tasks you need to get done. Then it comes a 5-minute interval when you can rest your mind, get some air, go to the bathroom, get some water, and so on. This process repeats few times and in the fourth break you take a longer interval, usually 15 to 30 minutes.
+          </p>
+          <h2 class="textcontent__h2">How to Use the Tool</h2>
+          <p class="textcontent__p">The magic of the Pomodoro Technique Tool is that it is really easy to use, even if you do not use this website or any other application. To start using this method, write down the tasks you need to get done, set the clock to 25 minutes and start working. After the work period is done, set another alarm clock for 5 minutes to get some rest. The whole cycle is shown below.</p>
+          <div class="pomodoro__cicle">
+            <img src='./imgs/cicle.svg' alt="Image with the cicles of the pomodoro technique"  class="IMGpomodoro__cicle" >
+          </div>
+          <h2 class="textcontent__h2">Tips on How to Get the Most Out of the Intervals</h2>
+          <p class="textcontent__p">
+            The work time is the period when you need to focus a 100% on your tasks. Try not to go get some water or go to the bathroom during this activity. Try not to use any social media either, like Facebook or Instagram, unless they are part of your job. The break times are opportunities to rest and get your mind refreshed. You may use these intervals to do common daily activities, such as cleaning the house or washing the dishes. You may also use it to do some exercise, such as push-ups, sit-ups or stretching.  If you do not want to spend your breaks these ways, you can use your intervals to analyze your tasks and get a broader view of what you are working on.
+          </p>
+          <p class="textcontent__p">
+            Time to set the clock and have fun with the Pomodoro Technique.
+          </p>
+        </div>
+        
+        
+        <div class="textcontent__website textcontent">
+          <h2 class="textcontent__h2" id="thewebsite">About the website</h2>
+          <div class="textcontent__website--img">
+          </div>
+          <p class="textcontent__p">This website was created to make it easier to use the Pomodoro Technique. You can use the Pomodoro Timer in the first section of the website. The tool is already set with the intervals explained above. In case you want to change any interval or frequency, you can use the settings' button in the superior part of the tool.
+          </p>
+          <p class="textcontent__p">
+            The application also comes with the to-do list feature next to the timer. Add anything you have to get done and keep track of it during your work times. In case you do not need the to-do list, or prefer to use another tool, you can just press the button “hide tasks” next to the settings' button and use only with the clock.
+          </p>
+          <p class="textcontent__p">
+            If you find any inconsistences on the website or if you have any suggestions to improve this tool, please feel free to contact us through email. We’ll be happy to help.
+          </p>
+        </div>
+      </section>
+
+      <div class="ferramentaPomo__settings" data-pomo-settings>
+        <div class="ferramentaPomo__settings--content">
+          <div class="settings__close" data-close-settings>+</div>
+          <div class="settings__titulo--container">
+            <img src="./imgs/logo.svg" alt="logo pomodoro" class="settings__title--logo"> 
+            <h1 class="settings__titulo">Pomodoro Settings</h1>
+          </div>
+          
+          <form class="settings__form" action="">
+            <div class="settings__input--container">
+              <p class="settings__input--text">Focus Time</p>
+              <input type="text" name="pomo-min" id="pomo-min" required pattern="[0-9]{1,2}" class="settings__input" data-input="focus-min">
+              <label for="pomo-min">Min</label>
+              <input type="text" name="pomo-sec" id="pomo-sec" required pattern="[0-9]{1,2}" class="settings__input" data-input="focus-sec">
+              <label for="pomo-sec">Sec</label>
+            </div>
+            
+            <div class="settings__input--container">
+              <p class="settings__input--text">Short Break</p>
+              <input type="text" name="break-min" id="break-min" required pattern="[0-9]{1,2}" class="settings__input" data-input="break-min">
+              <label for="break-min">Min</label>
+              <input type="text" name="break-sec" id="break-sec" required pattern="[0-9]{1,2}" class="settings__input" data-input="break-sec">
+              <label for="break-sec">Sec</label>
+            </div>
+            <div class="settings__input--container">
+              <p class="settings__input--text">Long Break</p>
+              <input type="text" name="long-min" id="long-min" required pattern="[0-9]{1,2}" class="settings__input" data-input="long-break-min">
+              <label for="long-min">Min</label>
+              <input type="text" name="long-sec" id="long-sec" required pattern="[0-9]{1,2}" class="settings__input" data-input="long-break-sec">
+              <label for="long-sec">Sec</label>
+            </div>
+              
+            <div class="settings__input--container">
+              <label for="number-pomos" id="number-pomos" class="settings__input--label">Long Break after</label>
+              <input type="text" name="number-pomos" id="number-pomos" class="settings__input" required pattern="[0-9]{1,2}" data-input="cycles">
+              <p class="long-after__text">Pomodoro's</p>
+            </div>
+            <div class="settings__input--container">
+              <label for="auto-cont" class="settings__input--label">Auto continue intervals?</label>
+              <input type="checkbox" name="auto-cont" data-input-autocont>
+            </div>
+
+            <input type="submit" class="settings__save" value="Save" data-settings-save>
+            </form>
+
+        </div>
+      </div>
+
+      <div class="pomotimer__continueRunning" data-contrunning>
+        <div class="pomotimer__continueRunning--content">
+          <div class="continueRunning__close" data-close-contrunning>+</div>
+          <div class="continueRunning__title--container">
+            <img src="./imgs/logo.svg" alt="logo pomodoro" class="continueRunning__title--logo"> 
+            <h1 class="continueRunning__title">Pomodoro</h1>
+          </div>
+          
+          <p class="continueRunning__text">You left with a pomodoro session still running.</p>
+          <p class="continueRunning__text">Would you like to continue where you left off?</p>
+          <div class="continueRunning__buttons">
+            <button class="continueRunning__button continueRunning__yesButton" data-yesbutton>Yes</button>
+            <button class="continueRunning__button continueRunning__noButton" data-nobutton>No</button>
+          </div>
+          
+
+        </div>
+      </div>
+
+      <div class="pomotimer__endSession" data-endsession>
+        <div class="pomotimer__endSession--content">
+          <div class="endSession__close" data-close-endsession>+</div>
+          <div class="endSession__title--container">
+            <img src="./imgs/logo.svg" alt="logo pomodoro" class="endSession__title--logo"> 
+            <h1 class="endSession__title">Pomodoro</h1>
+          </div>
+          
+          <p class="endSession__text">Are you sure you want to reset current session?</p>
+          <div class="endSession__buttons">
+            <button class="endSession__button endSession__yesButton" data-yesbutton-reset>Yes</button>
+            <button class="endSession__button endSession__noButton" data-nobutton-reset>No</button>
+          </div>
+          
+
+        </div>
+      </div>
+
+
+    </main>
+
+    <footer id="footer" class="rodape">
+      <p class="rodape__conteudo"> © Copyright Pomodoro 2022</p>
+      <a href="mailto:dailysimpletools@gmail.com" class="rodape__conteudo"> dailysimpletools@gmail.com</a>
+    </footer>
+
+    <script src="./main.js" type="module"></script>
+    <audio src="sounds/alarmStart.wav" id="som-alarme-start"></audio>
+    <audio src="sounds/alarmEnd.wav" id="som-alarme-end"></audio>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

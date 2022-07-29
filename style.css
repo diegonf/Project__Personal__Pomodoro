@@ -1,0 +1,11 @@
+:root {
+  --bgrbase: rgb(245, 245, 245);
+  --bgrtool1: rgb(230, 230, 230);
+  --bgrtool2: #d8d8d8;
+  --bgrtool3: #b8b8b8;
+  --bgrtool4: #a0a0a0;
+  --textcolortimer: black;
+  --textcolortool4: black;
+  --pagefont: 'Raleway', sans-serif;
+  scroll-padding-top: 4rem;
+}

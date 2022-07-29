@@ -1,0 +1,126 @@
+.pomotasks{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.pomotasks__input--container {
+  background: var(--bgrtool);
+  border: 0.15rem dashed #9b9595;
+  box-sizing: border-box;
+  display: flex;
+  height: 2rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  width: 100%;
+}
+
+.pomotasks__input {
+  background: none;
+  border: none;
+  height: 100%;
+  outline: none;
+  text-align: center;
+  width: 100%;
+}
+
+.pomotasks__input--enter {
+  height: 100%;
+  padding: 0 0.3rem;
+  position: absolute;
+  right: 0;
+  width: 1rem;
+}
+.pomotasks__input--enter:hover {
+  cursor: pointer;
+}
+
+.pomotasks__itens {
+  background: var(--bgrtool2);
+  border-radius: 0.2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0.3rem;
+  width: 100%;
+}
+
+.pomotasks__item {
+  align-items: center;
+  background: var(--bgrtool3);
+  border-radius: 0.3rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  height: 2rem;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+  padding: 0 0.5rem;
+}
+
+.pomotasks__item.done {
+  text-decoration: line-through;
+}
+
+.pomotasks__item--texto {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pomotasks__item--texto:hover {
+  white-space: normal;
+}
+
+.pomotasks__item--botoes {
+  display: flex;
+  align-items: center;
+}
+
+.pomotasks__item--botao {
+  height: 1rem;
+  margin-left: 0.5rem;
+  background: none;
+}
+
+.pomotasks__item--botao:hover {
+  cursor: pointer;
+}
+
+.pomotasks__item--check {
+  border-radius: 50%;
+  border: 0.1rem solid black;
+}
+
+.pomotasks__item--excluir {
+  border: none;
+  background: no-repeat center / cover;
+  background-image: url('../imgs/trash.svg');
+}
+
+.pomotasks__item.done .pomotasks__item--check {
+  background: no-repeat center / 110% 110%;
+  background-image: url('../imgs/check.svg');
+  background-color: rgb(103, 235, 103);
+}
+
+
+@media screen and (min-width: 0px) {
+  .pomotasks__itens {
+    height: 85%;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .pomotasks__itens {
+    height: 100%;
+    max-height: 21rem;
+  }
+}
+@media screen and (min-width: 650px) and (max-height: 550px) {
+  .pomotasks__itens {
+    max-height: 11rem;
+  }
+} 
