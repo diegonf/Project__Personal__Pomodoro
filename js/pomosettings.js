@@ -5,7 +5,7 @@ export function callTimerSettings() {
 
   // funciton to load page
   carregaTimerConfig();
-  
+
   // Access to settings' window when pressed settings' button
   const body = document.querySelector('[data-body]');
   const pomoSettings = document.querySelector('[data-pomo-settings]');
@@ -30,17 +30,17 @@ export function callTimerSettings() {
     const regex = new RegExp('[0-9]{1,2}');
     var isValid = true;
     allInputs.forEach(input => {
-      if (input.value == "" || input.value == null || !regex.test(input.value)){
+      if (input.value == "" || input.value == null || !regex.test(input.value)) {
         isValid = false;
-      } 
+      }
     });
 
-    if(isValid) {
+    if (isValid) {
       event.preventDefault();
       salvarDadosConfig();
       pomoSettings.style.display = "none";
       body.style.overflow = "visible";
-    }   
+    }
   });
 
   // 'Hide Tasks' feature
@@ -49,7 +49,7 @@ export function callTimerSettings() {
 
   const tasksBlock = document.querySelector('[data-pomotasks-block]');
   const hideInput = document.querySelector('[data-hide-tasks]');
-  hideInput.addEventListener('change', function() {
+  hideInput.addEventListener('change', function () {
     checkHideTasks(this.checked);
     localStorage.setItem('hideTasks', JSON.stringify(this.checked));
   })
@@ -59,30 +59,35 @@ export function callTimerSettings() {
   checkPlayAudio(audioStatus);
 
   const audioControl = document.querySelector('[data-botao-volume]');
-  audioControl.addEventListener('click', () => {  
+  audioControl.addEventListener('click', () => {
     const audioStatus = JSON.parse(localStorage.getItem('audioStatus'));
     localStorage.setItem('audioStatus', JSON.stringify(!audioStatus));
     checkPlayAudio(!audioStatus);
   })
 
+  //corrigindo hideTasks para mobile
   window.addEventListener('resize', () => {
     const x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-    if (x<=650) {
+    if (x <= 650) {
       tasksBlock.style.display = "flex";
       hideInput.checked = false;
       localStorage.setItem('hideTasks', JSON.stringify(false));
+
+      const timerBlock = document.querySelector('[data-pomotimer-block]');
+      const pomoContainer = document.querySelector('[data-pomo-container]');
+      timerBlock.classList.remove('hideTaskChecked')
+      pomoContainer.classList.remove('hideTaskChecked')
     };
-  
   }, true);
 }
 
 // ********************************************* Carrega Config  *********************************************
-export function carregaTimerConfig(){
+export function carregaTimerConfig() {
   var timePomMin, timeBreakMin, timePomSec, timeBreakSec, timeLongMin, timeLongSec, qtdPomoAteLong, rodarAutomatico;
   const dadosConfigAtual = JSON.parse(localStorage.getItem('config')) || {};
-  
+
   timePomMin = dadosConfigAtual.timePomMin;
-  
+
   if (timePomMin == null) {
     timePomMin = 25;
     timePomSec = 0;
@@ -92,7 +97,7 @@ export function carregaTimerConfig(){
     timeLongSec = 0;
     qtdPomoAteLong = 4;
     rodarAutomatico = true;
-    
+
   } else {
     timePomMin = dadosConfigAtual.timePomMin;
     timePomSec = dadosConfigAtual.timePomSec;
@@ -115,24 +120,24 @@ export function carregaTimerConfig(){
     rodarAutomatico
   ];
   setDadosConfig(timePomMin, timePomSec, timeBreakMin, timeBreakSec, timeLongMin, timeLongSec, qtdPomoAteLong, rodarAutomatico);
-  
+
   const settingsInputs = document.querySelectorAll('[data-input]');
   const settingsAutoCont = document.querySelector('[data-input-autocont]')
-  let i=0;
+  let i = 0;
   settingsInputs.forEach(input => {
     input.value = configSelecionada[i];
     i++;
   });
   settingsAutoCont.checked = configSelecionada[settingsInputs.length];
-  
+
 }
 
 // ********************************************* Salva Nova Config  *********************************************
-export function salvarDadosConfig () {
+export function salvarDadosConfig() {
 
   const settingsAutoCont = document.querySelector('[data-input-autocont]')
   const settingsInputs = document.querySelectorAll('[data-input]');
-  let i=1;
+  let i = 1;
   var dadosConfigAtual = [];
   settingsInputs.forEach(input => {
     dadosConfigAtual = [...dadosConfigAtual, input.value];
@@ -141,14 +146,14 @@ export function salvarDadosConfig () {
 
   dadosConfigAtual = [...dadosConfigAtual, settingsAutoCont.checked];
 
-  setDadosConfig(dadosConfigAtual[0],dadosConfigAtual[1],dadosConfigAtual[2],dadosConfigAtual[3],dadosConfigAtual[4],dadosConfigAtual[5],dadosConfigAtual[6], dadosConfigAtual[7]);
+  setDadosConfig(dadosConfigAtual[0], dadosConfigAtual[1], dadosConfigAtual[2], dadosConfigAtual[3], dadosConfigAtual[4], dadosConfigAtual[5], dadosConfigAtual[6], dadosConfigAtual[7]);
 
   resetTimer();
   callTimer();
 }
 
 // ********************************************* Funções Suporte  *********************************************
-function setDadosConfig (timePomMin, timePomSec, timeBreakMin, timeBreakSec, timeLongMin, timeLongSec, qtdPomoAteLong, rodarAutomatico) {
+function setDadosConfig(timePomMin, timePomSec, timeBreakMin, timeBreakSec, timeLongMin, timeLongSec, qtdPomoAteLong, rodarAutomatico) {
   const configSelecionada = {
     timePomMin,
     timePomSec,
@@ -163,41 +168,44 @@ function setDadosConfig (timePomMin, timePomSec, timeBreakMin, timeBreakSec, tim
   localStorage.setItem('config', JSON.stringify(configSelecionada));
 }
 
-function checkHideTasks(checked){
+function checkHideTasks(checked) {
   const hideInput = document.querySelector('[data-hide-tasks]');
-  
+
   const tasksBlock = document.querySelector('[data-pomotasks-block]');
   const timerBlock = document.querySelector('[data-pomotimer-block]');
   const pomoContainer = document.querySelector('[data-pomo-container]');
 
-
   hideInput.checked = checked;
   if (checked) {
     tasksBlock.style.display = "none";
-    timerBlock.style.width = "100%"
-    pomoContainer.style.width = "25rem"
+    timerBlock.classList.add('hideTaskChecked')
+    pomoContainer.classList.add('hideTaskChecked')
+    // timerBlock.style.width = "100%"
+    // pomoContainer.style.width = "25rem"
   } else {
     tasksBlock.style.display = "flex";
-    timerBlock.style.width = "50%";
-    pomoContainer.style.width = "40rem"
+    timerBlock.classList.remove('hideTaskChecked')
+    pomoContainer.classList.remove('hideTaskChecked')
+    // timerBlock.style.width = "50%";
+    // pomoContainer.style.width = "40rem"
   }
 }
 
 const checkPlayAudio = (status) => {
-  if(status === null || status === '') {
+  if (status === null || status === '') {
     status = true;
     localStorage.setItem('audioStatus', JSON.stringify(status));
   }
   const audioOnIcon = document.querySelector('[data-botao-volumeon]');
   const audioOffIcon = document.querySelector('[data-botao-volumeoff]');
 
-  if(status) {
-    audioOnIcon.style.display='flex';
-    audioOffIcon.style.display='none';
+  if (status) {
+    audioOnIcon.style.display = 'flex';
+    audioOffIcon.style.display = 'none';
   } else {
     {
-      audioOnIcon.style.display='none';
-      audioOffIcon.style.display='flex';
+      audioOnIcon.style.display = 'none';
+      audioOffIcon.style.display = 'flex';
     }
   }
 }
@@ -207,7 +215,7 @@ export const playAudio = (alarm) => {
   console.log(audioStatus);
   alarm.volume = 0.5;
 
-  if(audioStatus) {
+  if (audioStatus) {
     alarm.play();
   }
 }

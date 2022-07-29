@@ -115,6 +115,9 @@
     background: var(--bgrtool1);
     width: 40rem;
   }
+  .pomotool__container.hideTaskChecked{
+    width: 25rem;
+  }
   .pomotool__header--container {
     background: var(--bgrtool3);
     border-top-left-radius: 0.5rem;
@@ -144,6 +147,9 @@
     min-width: 0;
     width: 50%;
     justify-content: none;
+  }
+  .pomotool__block.hideTaskChecked {
+    width: 100%;
   }
 
   .ad1 {
