@@ -72,7 +72,7 @@ function startTimer() {
   var minutes, seconds;
   if (duration == timerInicial){
     // Toca alarme para inciar contador
-    const alarmStart = document.querySelector('#som-alarme-start'); // selecionando o som do alarme
+    const alarmStart = new Audio('../sounds/alarmStart.wav'); // selecionando o som do alarme
     playAudio(alarmStart);
     // Checa se o timer é um pomodoro para adicionar ao contador e mudar visualização
     if (timerAtivo == "startPomo") {
@@ -93,7 +93,7 @@ function startTimer() {
     timerPC = parseInt((dataAtual.getTime() - dataInicial.getTime())/1000); //pega o tempo transcorrido em segundos
     
     if (timer < 0) {
-      const alarmEnd = document.querySelector('#som-alarme-end'); // selecionando o som do alarme
+      const alarmEnd = new Audio('../sounds/alarmEnd.wav'); // selecionando o som do alarme
 
       playAudio(alarmEnd);
       stopCurrentTimer();

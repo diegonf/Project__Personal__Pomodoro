@@ -212,10 +212,9 @@ const checkPlayAudio = (status) => {
 
 export const playAudio = (alarm) => {
   const audioStatus = JSON.parse(localStorage.getItem('audioStatus')) || false; //starting
-  console.log(audioStatus);
-  alarm.volume = 0.5;
-
+  
   if (audioStatus) {
+    alarm.volume = 0.5;
     alarm.play();
   }
 }
