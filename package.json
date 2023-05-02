@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "deployFB": "firebase deploy --only hosting",
+    "deployFBPreview": "firebase hosting:channel:deploy preview_app"
+  }
+}
