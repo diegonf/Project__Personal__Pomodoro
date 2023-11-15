@@ -1,7 +1,7 @@
 ## <p align="center">![Pomodoro Tool](./imgs/pomodoro-tool2.PNG)<br>Pomodoro Tool</p>
 
 
-* Projeto Publicado: https://www.pomodoro.dailysimpletools.com
+* Projeto Publicado: https://www.pomodoro.dinf.dev
 
 ## Descrição do projeto
 Pomodoro é uma técnica de estudos com o objetivo de ter mais foco, e consequentemente, ser mais produtivo na realização e/ou aprendizado de tarefas complexas e dificeis. A ideia de desenvolver essa aplicação surgiu como uma ideia de criar meu portfólio pessoal, e ao mesmo tempo disponibilizar, tanto para mim quanto para toda a comunidade, uma ferramenta útil para facilitar a utilização dessa técnica. 
